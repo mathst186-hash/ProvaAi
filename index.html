@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4338ca">
+  <meta name="description" content="Crie avaliações e simulados com apoio de inteligência artificial.">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <title>ProvaIA — Avaliações inteligentes</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="ProvaIA início"><span class="brand-icon">P</span><span>Prova<span class="accent">IA</span><small>Avaliações inteligentes</small></span></a>
+    <button id="installBtn" class="button button-outline hidden" type="button">Instalar app</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">PARA PROFESSORES E EDUCADORES</div>
+      <h1>Prepare avaliações melhores, <span class="accent">em menos tempo.</span></h1>
+      <p>Gere provas, listas e simulados com questões originais. Revise, imprima e transforme seus materiais em produtos didáticos.</p>
+      <div class="hero-pills"><span>✓ Várias disciplinas</span><span>✓ Gabarito comentado</span><span>✓ Pronto para imprimir</span></div>
+    </section>
+
+    <section class="workspace">
+      <div class="section-heading">
+        <div><span class="eyebrow">CRIADOR DE AVALIAÇÕES</span><h2>Monte sua prova</h2></div>
+        <span class="step-tag">1 · Configurar</span>
+      </div>
+      <form id="examForm">
+        <div class="field-grid">
+          <label>Inteligência artificial
+            <select id="provider"><option value="openai">OpenAI / ChatGPT API</option><option value="gemini">Google Gemini API</option></select>
+          </label>
+          <label>Disciplina
+            <select id="subject">
+              <option>Matemática</option><option>Português</option><option>Redação</option><option>Física</option><option>Química</option><option>Biologia</option><option>História</option><option>Geografia</option><option>Filosofia</option><option>Sociologia</option><option>Inglês</option><option>Espanhol</option><option>Raciocínio lógico</option><option>Outra</option>
+            </select>
+          </label>
+          <label>Etapa de ensino
+            <select id="stage"><option>Fundamental I</option><option>Fundamental II</option><option selected>Ensino Médio</option><option>Vestibular/ENEM</option><option>Concurso</option><option>Outro</option></select>
+          </label>
+          <label>Série/turma
+            <input id="grade" maxlength="60" placeholder="Ex.: 8º ano ou 3ª série">
+          </label>
+          <label>Quantidade de questões
+            <select id="quantity"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select>
+          </label>
+          <label>Nível de dificuldade
+            <select id="difficulty"><option>Fácil</option><option selected>Média</option><option>Difícil</option><option>Mista</option></select>
+          </label>
+          <label>Formato das questões
+            <select id="type"><option>Múltipla escolha</option><option>Discursiva</option><option selected>Mista</option></select>
+          </label>
+          <label class="checkbox-label"><input id="answerKey" type="checkbox" checked> Incluir gabarito comentado</label>
+        </div>
+        <label>Conteúdo / objetivo da avaliação
+          <textarea id="topic" required maxlength="500" rows="3" placeholder="Ex.: equações do 1º grau, interpretação de gráficos e problemas contextualizados"></textarea>
+        </label>
+        <label>Orientações extras <span class="muted">(opcional)</span>
+          <textarea id="extra" maxlength="1000" rows="2" placeholder="Ex.: contextualizar com situações do cotidiano, incluir habilidades da BNCC..."></textarea>
+        </label>
+        <div class="form-actions"><button class="button button-primary" id="generateBtn" type="submit"><span>✦</span> Gerar avaliação</button><span class="muted small">A geração pode ter custo na API escolhida.</span></div>
+      </form>
+      <div id="status" class="status hidden" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="resultSection" class="workspace hidden">
+      <div class="section-heading result-heading"><div><span class="eyebrow">SUA AVALIAÇÃO</span><h2>Revise e finalize</h2></div><span class="step-tag">2 · Resultado</span></div>
+      <div class="notice">Revise todas as questões e respostas antes de aplicar ou vender. A IA pode cometer erros.</div>
+      <label for="resultText">Conteúdo gerado (você pode editar antes de imprimir ou salvar)</label>
+      <textarea id="resultText" class="result-text" rows="22" spellcheck="true"></textarea>
+      <div class="result-actions">
+        <button class="button button-primary" id="printBtn" type="button">Imprimir / salvar PDF</button>
+        <button class="button button-outline" id="downloadBtn" type="button">Baixar TXT</button>
+        <button class="button button-outline" id="copyBtn" type="button">Copiar texto</button>
+      </div>
+    </section>
+
+    <section class="market">
+      <div><span class="eyebrow">FUTURO NEGÓCIO</span><h2>Crie. Organize. Comercialize.</h2><p>Prepare materiais próprios, crie coleções por série e discipline e venda seus arquivos digitais.</p></div>
+      <div class="market-cards">
+        <article><span class="card-icon">▤</span><h3>Materiais avulsos</h3><p>Provas, listas e simulados em PDF.</p><strong>Preço definido por você</strong></article>
+        <article><span class="card-icon">↻</span><h3>Assinatura mensal</h3><p>Acesso recorrente a ferramentas e coleções.</p><strong>Planos para professores</strong></article>
+        <article><span class="card-icon">▣</span><h3>Biblioteca docente</h3><p>Organize e atualize seu catálogo de materiais.</p><strong>Próxima etapa do produto</strong></article>
+      </div>
+      <p class="muted small">A loja e a cobrança online ainda não estão ativadas nesta versão. Não há pagamentos reais nem contas de usuários no MVP.</p>
+    </section>
+
+    <footer><span>© <span id="year"></span> ProvaIA</span><span>Feito para apoiar o trabalho docente.</span></footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

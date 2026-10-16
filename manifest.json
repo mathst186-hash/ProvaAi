@@ -1,0 +1,12 @@
+{
+  "name": "ProvaIA — Avaliações inteligentes",
+  "short_name": "ProvaIA",
+  "description": "Crie avaliações e simulados com apoio de IA.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7fc",
+  "theme_color": "#4338ca",
+  "icons": [
+    {"src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
